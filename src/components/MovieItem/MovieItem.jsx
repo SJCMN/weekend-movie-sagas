@@ -12,7 +12,7 @@ function MovieItem({ movie }) {
                 type: 'ADD_ID',
                 payload: movie.id
             }
-        )
+        );
         history.push('/details')
     }
 
@@ -21,7 +21,7 @@ function MovieItem({ movie }) {
         <div >
             <h3>{movie.title}</h3>
             <img
-                onClick={() => handleClick}
+                onClick={handleClick}
                 src={movie.poster}
                 alt={movie.title} />
         </div>

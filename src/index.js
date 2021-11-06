@@ -79,7 +79,7 @@ const movieId = (state = '', action) => {
 }
 
 
-const movieDetail = (state = '', action) => {
+const movieDetail = (state = {}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
