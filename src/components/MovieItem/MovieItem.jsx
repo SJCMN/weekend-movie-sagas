@@ -18,7 +18,7 @@ function MovieItem({ movie }) {
 
     return (
         <div >
-            <h3>{movie.title}</h3>
+            <h4>{movie.title}</h4>
             <img
                 onClick={handleClick}
                 src={movie.poster}

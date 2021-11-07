@@ -22,15 +22,20 @@ function DetailsPage () {
     console.log('details page' , movieDetail);
 
     return (
-
         <div>
-            <h2 onClick={handleClick}>MOVIE DETAILS</h2>
-            <h3>{movieDetail.title}</h3>
-            <h4>{movieDetail.description}</h4>
-            <img
-                // onClick={handleClick}
-                src={movieDetail.poster}
-                alt={movieDetail.title} />
+            <div>
+                <h2>MOVIE DETAILS</h2>
+                <h3>{movieDetail.title}</h3>
+                <h4>{movieDetail.description}</h4>
+                <img
+                    // onClick={handleClick}
+                    src={movieDetail.poster}
+                    alt={movieDetail.title} />
+                
+            </div>
+            <div>
+                <button onClick={handleClick}>BACK to List</button>
+            </div>
         </div>
         
     )
