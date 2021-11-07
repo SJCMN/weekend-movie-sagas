@@ -17,7 +17,6 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE', fetchMovie)
-    // yield takeEvery('SET_DETAILS', fetchMovieDetails)
 }
 
 
@@ -67,17 +66,7 @@ const genres = (state = {}, action) => {
     }
 }
 
-// Uses movie id to request row from DB
-// const movieId = (state = '', action) => {
-//     switch (action.type) {
-//         case 'SET_MOVIE':
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
-
-// Uses movie id to request row from DB
+// Adds row from db to state store
 const movieDetail = (state = [], action) => {
     switch (action.type) {
         case 'SET_DETAILS':
