@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function MovieSearch () {
+    const history = useHistory();
+    // const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
     const [ title, setTitle ] = useState('');
     const [ year, setYear ] = useState('');
     const [ description, setDescription ] = useState('');
@@ -12,12 +13,16 @@ function MovieSearch () {
 
 
     const handleClick = (e) => {
+        
         e.preventDefault();
         console.log('clicked it');
+
         setTitle('');
         setYear('');
         setDescription('');
         setGenre('');
+
+        // history.push('/add');
     }
 
     console.log(title,year,description,genre);
@@ -49,7 +54,7 @@ function MovieSearch () {
                 onChange={(e) => setGenre (e.target.value)}
                 placeholder="Movie Genre"/>
 
-                <button>Find Movie</button>
+                <button onClick={() => history.push('/add')}>Find Movie</button>
             </form>
         </div>
     );

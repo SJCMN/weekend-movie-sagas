@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
-      <MovieSearch />
+      
       <Router>      
-
+        <MovieSearch />
         <Route path="/" exact>
           <MovieList />
         </Route >
