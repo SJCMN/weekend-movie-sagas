@@ -8,10 +8,7 @@ function MovieItem({ movie }) {
 
     const handleClick = () => {
         dispatch(
-            {
-                type: 'ADD_ID',
-                payload: movie.id
-            }
+            { type: 'FETCH_MOVIE', payload: movie.id }
         );
         history.push('/details')
     }
