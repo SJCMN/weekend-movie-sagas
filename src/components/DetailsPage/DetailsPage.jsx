@@ -16,7 +16,7 @@ function DetailsPage () {
     }
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIES'});
+        dispatch({ type: 'FETCH_MOVIE'});
     }, []);
 
     console.log('details page' , movieDetail);
