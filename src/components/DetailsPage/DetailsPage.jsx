@@ -7,8 +7,9 @@ function DetailsPage () {
 
     const dispatch = useDispatch();
 
-    const movieDetail = useSelector(store => store.movieDetail)
+    const movieDetail = useSelector(store => store.movieDetail[0])
     const history = useHistory();
+
 
     const handleClick = () => {
         history.push('/');
@@ -25,6 +26,7 @@ function DetailsPage () {
         <div>
             <h2 onClick={handleClick}>MOVIE DETAILS</h2>
             <h3>{movieDetail.title}</h3>
+            <h4>{movieDetail.description}</h4>
             <img
                 // onClick={handleClick}
                 src={movieDetail.poster}

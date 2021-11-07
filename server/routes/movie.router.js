@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 });
 
-router.get('/=id?', (req, res) => {
+router.get('/:id', (req, res) => {
 
   let id = req.params.id;
   console.log('GET movie.router', id);

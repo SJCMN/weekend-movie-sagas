@@ -13,6 +13,8 @@ function MovieItem({ movie }) {
         history.push('/details')
     }
 
+ 
+
 
     return (
         <div >
