@@ -13,10 +13,13 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
+
+
 // SAGAS //
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('FETCH_MOVIE', fetchMovie)
+    yield takeEvery('FETCH_MOVIE', fetchMovie);
+    yield takeEvery('SEARCH_OMDB', fetchFromOmdb);
 }
 
 
@@ -26,8 +29,8 @@ function* fetchAllMovies() {
         const movies = yield axios.get('/api/movie');
         // console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
-    } catch {
-        console.log('get all error');
+    } catch (error) {
+        console.log('get all error', console.error());
     }
 }
 
@@ -38,7 +41,25 @@ function* fetchMovie(action) {
         const singleMovie = yield axios.get(`/api/movie/${id}`)
         // console.log('fetchMovie:', action);
         yield put({ type: 'SET_DETAILS', payload: singleMovie.data})
+     
     } catch (error) {
+        console.log('GET error single movie', error);
+        
+    }
+}
+
+// Search OMDb API for movie 
+function* fetchFromOmdb(action){
+
+    try {
+        let searchTerms = action.payload
+        let title = searchTerms.title
+        console.log('fetchFromOmdb', searchTerms);
+        
+        const searchResult = yield axios.get(`/api/search/${title}`)
+        yield put( { type: 'SET_SEARCH', payload: searchResult.data})
+    } catch (error) {
+        console.log('GET client error search', error);   
     }
 }
 
@@ -67,9 +88,19 @@ const genres = (state = {}, action) => {
 }
 
 // Adds row from db to state store
-const movieDetail = (state = [], action) => {
+const movieDetail = (state = {}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// Adds row from OMDB search to state store
+const omdbSearch = (state = [], action) => {
+    switch(action.type){
+        case 'SET_SEARCH':
             return action.payload;
         default:
             return state;
@@ -83,7 +114,8 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        movieDetail
+        movieDetail,
+        omdbSearch
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
