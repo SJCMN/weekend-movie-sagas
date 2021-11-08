@@ -7,7 +7,7 @@ function DetailsPage () {
 
     const dispatch = useDispatch();
 
-    const movieDetail = useSelector(store => store.movieDetail[0])
+    const movieDetail = useSelector(store => store.movieDetail)
     const history = useHistory();
 
 
@@ -15,9 +15,9 @@ function DetailsPage () {
         history.push('/');
     }
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_MOVIE'});
-    }, []);
+    // useEffect(() => {
+    //     dispatch({ type: 'SET_DETAILS'});
+    // }, []);
 
     console.log('details page' , movieDetail);
 
@@ -25,12 +25,12 @@ function DetailsPage () {
         <div>
             <div>
                 <h2>MOVIE DETAILS</h2>
-                <h3>{movieDetail.title}</h3>
-                <h4>{movieDetail.description}</h4>
+                <h3>{movieDetail[0].title}</h3>
+                <h4>{movieDetail[0].description}</h4>
                 <img
                     // onClick={handleClick}
-                    src={movieDetail.poster}
-                    alt={movieDetail.title} />
+                    src={movieDetail[0].poster}
+                    alt={movieDetail[0].title} />
                 
             </div>
             <div>
