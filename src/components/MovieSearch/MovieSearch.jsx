@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 function MovieSearch () {
     const history = useHistory();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const [ title, setTitle ] = useState('');
     const [ year, setYear ] = useState('');
@@ -15,14 +15,23 @@ function MovieSearch () {
     const handleClick = (e) => {
         
         e.preventDefault();
-        console.log('clicked it');
+        // console.log('clicked it');
+
+        dispatch({
+            type: 'SEARCH_OMDB',
+            payload: {
+                title,
+                year,
+                description,
+                genre
+            }
+        })
 
         setTitle('');
         setYear('');
         setDescription('');
         setGenre('');
 
-        // history.push('/add');
     }
 
     console.log(title,year,description,genre);

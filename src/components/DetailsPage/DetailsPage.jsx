@@ -28,7 +28,6 @@ function DetailsPage () {
                 <h3>{movieDetail[0].title}</h3>
                 <h4>{movieDetail[0].description}</h4>
                 <img
-                    // onClick={handleClick}
                     src={movieDetail[0].poster}
                     alt={movieDetail[0].title} />
                 

@@ -13,6 +13,7 @@ function MovieItem({ movie }) {
             { type: 'FETCH_MOVIE', payload: movie.id }
         );
         console.log('Movie Item', movie.id);
+        
     }
 
     // handleClick moved to secondary event so state has a milisecond to update before rendering /details

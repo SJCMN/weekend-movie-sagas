@@ -49,13 +49,17 @@ function* fetchMovie(action) {
 }
 
 // Search OMDb API for movie 
-function* fetchFromOmdb(){
+function* fetchFromOmdb(action){
+
     try {
         let searchTerms = action.payload
-        const searchResult = yield axios.get(`/api/search/${searchTerm}`)
+        let title = searchTerms.title
+        console.log('fetchFromOmdb', searchTerms);
+        
+        const searchResult = yield axios.get(`/api/search/${title}`)
         yield put( { type: 'SET_SEARCH', payload: searchResult.data})
     } catch (error) {
-        console.log('GET error search', error);   
+        console.log('GET client error search', error);   
     }
 }
 
