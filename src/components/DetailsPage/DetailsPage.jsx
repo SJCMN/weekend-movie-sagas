@@ -11,6 +11,32 @@ function DetailsPage () {
     const history = useHistory();
     let { id } = useParams();
     console.log('DetailsPage', id);
+
+    // const movieDetail = {}
+
+    // const findMovieDetail = ( movies, id ) => {
+    //     for (let movie of movies){
+    //         if(movie.id === Number(id)) {
+    //             movieDetail = movie;
+    //             return movieDetail
+    //         }
+    //     }
+    // }
+
+    let movieDetail = {};
+    function findMovieDetail()  {
+        // console.log('ID is ', id);
+        for (let movie of movies) {
+            if (movie.id === Number(id)) {
+                movieDetail = movie;
+            } 
+        } // end of for loop
+    }
+
+    findMovieDetail();
+
+
+
     
 
 
@@ -18,24 +44,24 @@ function DetailsPage () {
         history.push('/');
     }
 
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_MOVIE_GENRES', payload: movieItem.id});
-    // }, []);
+    useEffect(() => {
+      
+        // dispatch({ type: 'FETCH_MOVIE_GENRES', payload: movieItem.id});
+    }, []);
 
-    // console.log('details page' , movieItem);
+    console.log('details page' , movieDetail);
 
     return (
         <div>
-            {/* <div>
+            <div>
                 <h2>MOVIE DETAILS</h2>
-                <p>${JSON.stringify.movieItem}</p>
-                <h3>{movieItem.title}</h3>
-                <h4>{movieItem.description}</h4>
+                <h3>{movieDetail.title}</h3>
+                <h4>{movieDetail.description}</h4>
                 <img
-                    src={movieItem.poster}
-                    alt={movieItem.title} />
+                    src={movieDetail.poster}
+                    alt={movieDetail.title} />
                 <ul>
-                    {movieItem.genres?.map(genre => {
+                    {movieDetail.genres?.map(genre => {
                         return <li key={genre.id}>{genre.name}</li>
                     })}
                 </ul>
@@ -43,7 +69,7 @@ function DetailsPage () {
             </div>
             <div>
                 <button onClick={handleClick}>BACK to List</button>
-            </div> */}
+            </div>
         </div>
         
     )
