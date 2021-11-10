@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 function DetailsPage () {
 
     const dispatch = useDispatch();
 
-    const movieDetail = useSelector(store => store.movieDetail)
+    const movies = useSelector(store => store.movies)
     const history = useHistory();
+    let { id } = useParams();
+    console.log('DetailsPage', id);
+    
 
 
     const handleClick = () => {
@@ -16,25 +19,31 @@ function DetailsPage () {
     }
 
     // useEffect(() => {
-    //     dispatch({ type: 'SET_DETAILS'});
+    //     dispatch({ type: 'FETCH_MOVIE_GENRES', payload: movieItem.id});
     // }, []);
 
-    console.log('details page' , movieDetail);
+    // console.log('details page' , movieItem);
 
     return (
         <div>
-            <div>
+            {/* <div>
                 <h2>MOVIE DETAILS</h2>
-                <h3>{movieDetail[0].title}</h3>
-                <h4>{movieDetail[0].description}</h4>
+                <p>${JSON.stringify.movieItem}</p>
+                <h3>{movieItem.title}</h3>
+                <h4>{movieItem.description}</h4>
                 <img
-                    src={movieDetail[0].poster}
-                    alt={movieDetail[0].title} />
+                    src={movieItem.poster}
+                    alt={movieItem.title} />
+                <ul>
+                    {movieItem.genres?.map(genre => {
+                        return <li key={genre.id}>{genre.name}</li>
+                    })}
+                </ul>
                 
             </div>
             <div>
                 <button onClick={handleClick}>BACK to List</button>
-            </div>
+            </div> */}
         </div>
         
     )

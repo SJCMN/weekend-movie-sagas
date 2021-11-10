@@ -1,36 +1,26 @@
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+
 
 function MovieItem({ movie }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [ id, setMovieId] = useState('');
 
-    // handleFetch set to trigger onMouseEnter to 'prime' the state pump before click pushes to details page
-    const handleFetch = () => {
+    // SET_MOVIE 
+    const setMovieItem = (movie) => {
         dispatch(
-            { type: 'FETCH_MOVIE', payload: movie.id }
+            { type: 'SET_MOVIE_ITEM', payload: movie.id }
         );
-        console.log('Movie Item', movie.id);
-        
+        console.log('setMovie', movie.id);
+        history.push(`details/${movie.id}`)
     }
-
-    // handleClick moved to secondary event so state has a milisecond to update before rendering /details
-    const handleClick = () => {
-        history.push('/details')
-    }
-
-
  
-
-
     return (
-        <div value={id} >
+        <div >
             <h4>{movie.title}</h4>
             <img
-                onMouseEnter={handleFetch}
-                onClick={handleClick}
+                
+                onClick={() => setMovieItem (movie)}
                 src={movie.poster}
                 alt={movie.title} />
         </div>
