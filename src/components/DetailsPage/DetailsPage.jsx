@@ -9,20 +9,11 @@ function DetailsPage () {
 
     const movies = useSelector(store => store.movies)
     const history = useHistory();
+    // Params are set to id when details/:id is added to app route path
     let { id } = useParams();
     console.log('DetailsPage', id);
 
-    // const movieDetail = {}
-
-    // const findMovieDetail = ( movies, id ) => {
-    //     for (let movie of movies){
-    //         if(movie.id === Number(id)) {
-    //             movieDetail = movie;
-    //             return movieDetail
-    //         }
-    //     }
-    // }
-
+    // Compare id from params to id's in array from movie store
     let movieDetail = {};
     function findMovieDetail()  {
         // console.log('ID is ', id);
@@ -34,15 +25,6 @@ function DetailsPage () {
     }
 
     findMovieDetail();
-
-
-
-    
-
-
-    const handleClick = () => {
-        history.push('/');
-    }
 
     useEffect(() => {
       
@@ -68,7 +50,7 @@ function DetailsPage () {
                 
             </div>
             <div>
-                <button onClick={handleClick}>BACK to List</button>
+                <button onClick={() => (history.push('/'))}>Back to List</button>
             </div>
         </div>
         
