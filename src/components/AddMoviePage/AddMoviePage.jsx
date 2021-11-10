@@ -11,7 +11,7 @@ function AddMoviePage () {
              <div>
                 <h2>MOVIE DETAILS</h2>
                 <h3>{omdbSearch.Title}</h3>
-                <h4>{omdbSearch.Plot    }</h4>
+                <h4>{omdbSearch.Plot}</h4>
                 <img
                     // onClick={handleClick}
                     src={omdbSearch.Poster}

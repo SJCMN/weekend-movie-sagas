@@ -1,23 +1,35 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 
 function DetailsPage () {
 
     const dispatch = useDispatch();
 
-    const movieDetail = useSelector(store => store.movieDetail)
+    const movies = useSelector(store => store.movies)
+    const genres = useSelector(store => store.genres)
     const history = useHistory();
+    // Params are set to id when details/:id is added to app route path
+    let { id } = useParams();
+    console.log('DetailsPage', id);
 
-
-    const handleClick = () => {
-        history.push('/');
+    // Compare id from params to id's in array from movie store
+    let movieDetail = {};
+    function findMovieDetail()  {
+        // console.log('ID is ', id);
+        for (let movie of movies) {
+            if (movie.id === Number(id)) {
+                movieDetail = movie;
+            } 
+        } // end of for loop
     }
 
-    // useEffect(() => {
-    //     dispatch({ type: 'SET_DETAILS'});
-    // }, []);
+    findMovieDetail();
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_MOVIE_GENRES', payload: id});
+    }, []);
 
     console.log('details page' , movieDetail);
 
@@ -25,15 +37,20 @@ function DetailsPage () {
         <div>
             <div>
                 <h2>MOVIE DETAILS</h2>
-                <h3>{movieDetail[0].title}</h3>
-                <h4>{movieDetail[0].description}</h4>
+                <h3>{movieDetail.title}</h3>
+                <h4>{movieDetail.description}</h4>
                 <img
-                    src={movieDetail[0].poster}
-                    alt={movieDetail[0].title} />
+                    src={movieDetail.poster}
+                    alt={movieDetail.title} />
+                <ul>
+                    {genres?.map(genre => {
+                        return <li key={genre.id}>{genre.name}</li>
+                    })}
+                </ul>
                 
             </div>
             <div>
-                <button onClick={handleClick}>BACK to List</button>
+                <button onClick={() => (history.push('/'))}>Back to List</button>
             </div>
         </div>
         
