@@ -20,6 +20,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE', fetchMovie);
     yield takeEvery('SEARCH_OMDB', fetchFromOmdb);
+    yield takeEvery('SAVE_MOVIE', saveMovie);
     yield takeEvery('FETCH_MOVIE_GENRES', fetchMovieGenres)
 }
 
@@ -57,6 +58,16 @@ function* fetchMovie(action) {
     } catch (error) {
         console.log('GET error single movie', error);
         
+    }
+}
+
+// POST saved movie to teh db
+function* saveMovie(action) {
+    try{ 
+        yield axios.post('api/movie', action.payload) 
+        yield put( {type:'FETCH_MOVIES'} )
+    }catch (error) {
+        console.log('POST save movie client error', error);
     }
 }
 

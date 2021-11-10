@@ -43,9 +43,9 @@ function DetailsPage () {
                     src={movieDetail.poster}
                     alt={movieDetail.title} />
                 <ul>
-                    {genres?.map(genre => {
+                    {/* {genres?.map(genre => {
                         return <li key={genre.id}>{genre.name}</li>
-                    })}
+                    })} */}
                 </ul>
                 
             </div>

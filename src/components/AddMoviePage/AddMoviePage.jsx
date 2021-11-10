@@ -1,10 +1,27 @@
-import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function AddMoviePage () {
+
+    const dispatch = useDispatch();
     const history = useHistory();
     const omdbSearch = useSelector(store => store.omdbSearch)
+
+    const savedMovie = {
+        title: omdbSearch.Title,
+        poster: omdbSearch.Poster,
+        description: omdbSearch.Plot,
+        genre_id: 1
+    }
+
+    const saveMovie = () => {
+        dispatch(
+            {type: 'SAVE_MOVIE', payload: savedMovie}
+        )
+        history.push('/')
+    }    
+
 
     return(
         <div>
@@ -19,6 +36,7 @@ function AddMoviePage () {
                 
             </div>
 
+        <button onClick={() => saveMovie()}>Save Movie</button>
         <button onClick={() => history.push('/')}>Back to List</button>
         </div>
     );
