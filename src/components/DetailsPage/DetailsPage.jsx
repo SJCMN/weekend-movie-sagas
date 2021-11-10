@@ -8,6 +8,7 @@ function DetailsPage () {
     const dispatch = useDispatch();
 
     const movies = useSelector(store => store.movies)
+    const genres = useSelector(store => store.genres)
     const history = useHistory();
     // Params are set to id when details/:id is added to app route path
     let { id } = useParams();
@@ -27,8 +28,7 @@ function DetailsPage () {
     findMovieDetail();
 
     useEffect(() => {
-      
-        // dispatch({ type: 'FETCH_MOVIE_GENRES', payload: movieItem.id});
+        dispatch({ type: 'FETCH_MOVIE_GENRES', payload: id});
     }, []);
 
     console.log('details page' , movieDetail);
@@ -43,7 +43,7 @@ function DetailsPage () {
                     src={movieDetail.poster}
                     alt={movieDetail.title} />
                 <ul>
-                    {movieDetail.genres?.map(genre => {
+                    {genres?.map(genre => {
                         return <li key={genre.id}>{genre.name}</li>
                     })}
                 </ul>

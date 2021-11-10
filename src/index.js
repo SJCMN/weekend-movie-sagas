@@ -27,7 +27,7 @@ function* rootSaga() {
 function* fetchMovieGenres (action) {
     try{
         // trigger a GET request, wait for it to come back, then do something
-        const response = yield axios.get(`/api/movie/${action.payload}`)
+        const response = yield axios.get(`/api/genre/${action.payload}`)
         yield put({type: 'SET_SELECTED_MOVIE_GENRES', payload: response.data})
     } catch(error){
         console.log('Error', error);
@@ -92,24 +92,12 @@ const movies = (state = [], action) => {
 // Used to store the movie genres
 const genres = (state = {}, action) => {
     switch (action.type) {
-        case 'SET_GENRES':
+        case 'SET_SELECTED_MOVIE_GENRES':
             return action.payload;
         default:
             return state;
     }
 }
-
-// // Adds row from db to state store
-// const movieDetail = (state = {}, action) => {
-//     switch (action.type) {
-//         case 'SET_DETAILS':
-//             return action.payload;
-//         case 'SET_SELECTED_MOVIE_GENRES':
-//             return {...state, genres: action.payload}
-//         default:
-//             return state;
-//     }
-// }
 
 
 const movieItem = (state = {}, action) => {
