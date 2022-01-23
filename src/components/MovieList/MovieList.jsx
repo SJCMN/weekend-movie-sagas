@@ -15,6 +15,7 @@ function MovieList() {
     return (
         <main>
             <h1>MovieList</h1>
+            <div className="container">
                 <section className="movies">
                     {movies.map(movie => {
                         return (
@@ -25,6 +26,7 @@ function MovieList() {
                         );
                     })}
                 </section>
+            </div>
         </main>
 
     );

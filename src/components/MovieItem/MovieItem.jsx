@@ -17,7 +17,7 @@ function MovieItem({ movie }) {
     }
  
     return (
-        <div >
+        <div className="card">
             <h4>{movie.title}</h4>
             <img
                 

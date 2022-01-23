@@ -1,4 +1,10 @@
 img {
-    height: 275px;
-    padding: 10px
+    height: 300px;
+    padding: 5px
+}
+
+.card {
+    flex-basis: 20%;
+    margin-bottom: 25px;
+    padding: 0,8px;
 }

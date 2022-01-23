@@ -45,7 +45,7 @@ function MovieSearch () {
                 onChange={(e) => setTitle (e.target.value)}
                 placeholder="Movie Title"/>
 
-                <input 
+                {/* <input 
                 type="text" 
                 value={year} 
                 onChange={(e) => setYear (e.target.value)}
@@ -61,7 +61,7 @@ function MovieSearch () {
                 type="text" 
                 value={genre} 
                 onChange={(e) => setGenre (e.target.value)}
-                placeholder="Movie Genre"/>
+                placeholder="Movie Genre"/> */}
 
                 <button onClick={() => history.push('/add')}>Find Movie</button>
             </form>

@@ -1,6 +1,13 @@
 .movies {
+    align-items: center;
     display : flex;
     flex-wrap: wrap;
+    height: 10%;
+    justify-content: center;
+    padding: 8px;
 }
 
+.container {
+   padding: 100px;
+}
 
