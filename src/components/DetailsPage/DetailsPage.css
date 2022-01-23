@@ -1,0 +1,22 @@
+.plotContainer {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 80%;
+    padding: 20rem;
+    padding-top: 5rem;
+}
+
+.detailCard {
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    border-radius: .75rem;
+    width: 325px;
+    display: flex;
+    flex-direction: column;
+}
+
+.plot {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

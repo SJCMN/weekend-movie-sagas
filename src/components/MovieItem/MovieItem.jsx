@@ -20,10 +20,10 @@ function MovieItem({ movie }) {
         <div className="card">
             <h4>{movie.title}</h4>
             <img
-                
                 onClick={() => setMovieItem (movie)}
                 src={movie.poster}
-                alt={movie.title} />
+                alt={movie.title} 
+             />
         </div>
     )
 }

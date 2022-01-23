@@ -1,10 +1,13 @@
-img {
-    height: 300px;
-    padding: 5px
-}
-
 .card {
     flex-basis: 20%;
     margin-bottom: 25px;
-    padding: 0,8px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+
+img {
+    height: 400px;
+    padding: 5px;
+    border-radius: .75rem;
 }

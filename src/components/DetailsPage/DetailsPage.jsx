@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import './DetailsPage.css'
 
 
 function DetailsPage () {
@@ -34,28 +35,28 @@ function DetailsPage () {
     console.log('details page' , movieDetail);
 
     return (
-        <div>
-            <div>
-                <h2>MOVIE DETAILS</h2>
-                <h3>{movieDetail.title}</h3>
-                <h4>{movieDetail.description}</h4>
-                <img
-                    src={movieDetail.poster}
-                    alt={movieDetail.title} />
-                <ul>
-                    {/* {genres?.map(genre => {
-                        return <li key={genre.id}>{genre.name}</li>
-                    })} */}
-                </ul>
-                
-            </div>
-            <div>
-                <button onClick={() => (history.push('/'))}>Back to List</button>
+        <div className="plotContainer">
+            <div className="detailCard">
+                <h4>MOVIE DETAILS</h4>
+                    <img
+                        src={movieDetail.poster}
+                        alt={movieDetail.title} 
+                    />
+                <div className="plot">
+                    <h2>{movieDetail.title}</h2>
+                    <ul>
+                        {/* {genres?.map(genre => {
+                            return <li key={genre.id}>{genre.name}</li>
+                        })} */}
+                    </ul>
+                    <h5>{movieDetail.description}</h5>
+                </div> 
+                <div>
+                    <button onClick={() => (history.push('/'))}>Back to List</button>
+                </div>
             </div>
         </div>
-        
     )
-    
 }
 
 export default DetailsPage;
