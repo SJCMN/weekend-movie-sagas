@@ -24,20 +24,22 @@ function AddMoviePage () {
 
 
     return(
-        <div>
-             <div>
+        <div className="plotContainer">
+             <div className="detailCard">
                 <h2>MOVIE DETAILS</h2>
-                <h3>{omdbSearch.Title}</h3>
-                <h4>{omdbSearch.Plot}</h4>
-                <img
+                    <img
                     // onClick={handleClick}
                     src={omdbSearch.Poster}
-                    alt={omdbSearch.title} />
-                
+                    alt={omdbSearch.title} 
+                    />
+                <h3>{omdbSearch.Title}</h3>
+                <h4>{omdbSearch.Plot}</h4>
+               
+                <div>
+                    <button onClick={() => saveMovie()}>Save Movie</button>
+                    <button onClick={() => history.push('/')}>Back to List</button>
+                </div>
             </div>
-
-        <button onClick={() => saveMovie()}>Save Movie</button>
-        <button onClick={() => history.push('/')}>Back to List</button>
         </div>
     );
 };
